@@ -139,6 +139,23 @@ void delete_x(node_t *list_ptr, node_t *d)
     
 }
 
+//odwroc elementy na liscie
+void reverse(list_ptr_t &list_ptr)
+{
+    node_t *p, *d;
+    if (list_ptr)
+    {
+        d = list_ptr -> next_ptr;
+        while (d -> next_ptr)
+        {
+            p = d -> next_ptr;
+            d -> next_ptr = p -> next_ptr;
+            p -> next_ptr = list_ptr -> next_ptr;
+            list_ptr -> next_ptr = p;
+        }
+    }
+}
+
 
 int main()
 {
@@ -152,9 +169,9 @@ int main()
         cout << "[2] Wstaw x\n";
         cout << "[3] Wypisz liste\n";
         cout << "[4] Sprawdz czy x jest na liscie\n";
-        cout << "[5] Usun wskazany element z listy\n";
-        cout << "[6] \n";
-        cout << "[7] \n";
+        cout << "[5] \n";
+        cout << "[6] Usun wskazany element z listy\n";
+        cout << "[7] Odworc elementy na liscie\n";
         cout << "[8] Skasuj cala liste\n";
         cout << "\n";
         cin >> wybor;
@@ -185,8 +202,9 @@ int main()
                     cout << "Elementu " << x << " nie ma na liscie.\n";
                 break;
                 
-            case 5:
-                
+            case 5:;
+                break;
+            case 6:
                 d=list_ptr; //do przechodzenia po liscie
                 
                 if (list_ptr == NULL || list_ptr -> next_ptr == NULL)
@@ -206,11 +224,13 @@ int main()
                 
                 delete_x(list_ptr, d);
                 break;
-                
-                break;
-            case 6:;
-                break;
-            case 7:;
+            case 7:
+                if (list_ptr == NULL || list_ptr -> next_ptr == NULL)
+                {
+                    cout << "Lista nie istnieje lub nie ma elementow.\n";
+                    break;
+                }
+                reverse(list_ptr);
                 break;
             case 8:
                 if (list_ptr == NULL) {
