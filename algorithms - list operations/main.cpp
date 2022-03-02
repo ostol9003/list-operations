@@ -36,7 +36,10 @@ void create(list_ptr_t &list_ptr)
 
 // Wersja z przekazywaniem parametrów przez wskaniki (wskanik do
 // wskanika)
-void create2(node_t **list_ptr) {}
+void create2(node_t **list_ptr)
+{
+    
+}
 
 // wstawienie x za elementem wskazywanym przez p
 void insert(node_t *p, item_t x)
@@ -87,6 +90,7 @@ bool found_iter(node_t *list_ptr, int x)
 
 void delete_next(node_t *p)
 {
+   
     if (p == NULL || p -> next_ptr == NULL) {
         cout << "Lista nie istnieje lub nie ma elementow.\n";
         return;
@@ -169,7 +173,7 @@ int main()
         cout << "[2] Wstaw x\n";
         cout << "[3] Wypisz liste\n";
         cout << "[4] Sprawdz czy x jest na liscie\n";
-        cout << "[5] \n";
+        cout << "[5] Usun element za wskazanym\n";
         cout << "[6] Usun wskazany element z listy\n";
         cout << "[7] Odworc elementy na liscie\n";
         cout << "[8] Skasuj cala liste\n";
@@ -202,7 +206,9 @@ int main()
                     cout << "Elementu " << x << " nie ma na liscie.\n";
                 break;
                 
-            case 5:;
+            case 5:
+                
+                delete_next(list_ptr->next_ptr->next_ptr); //usuniemy element 2
                 break;
             case 6:
                 d=list_ptr; //do przechodzenia po liscie
