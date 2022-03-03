@@ -90,7 +90,7 @@ bool found_iter(node_t *list_ptr, int x)
 
 void delete_next(node_t *p)
 {
-   
+    
     if (p == NULL || p -> next_ptr == NULL) {
         cout << "Lista nie istnieje lub nie ma elementow.\n";
         return;
@@ -161,6 +161,15 @@ void reverse(list_ptr_t &list_ptr)
 }
 
 
+node_t tail(node_t *list_ptr)
+{
+    
+    node_t *d = list_ptr;
+    while(d -> next_ptr != NULL) d = d -> next_ptr;
+    
+    return *d;
+}
+
 int main()
 {
     list_ptr_t list_ptr = NULL;
@@ -176,7 +185,11 @@ int main()
         cout << "[5] Usun element za wskazanym\n";
         cout << "[6] Usun wskazany element z listy\n";
         cout << "[7] Odworc elementy na liscie\n";
-        cout << "[8] Skasuj cala liste\n";
+        cout << "[8] Skasuj cala liste\n\n\n";
+        cout << "ZADANIA DODATKOWE\n\n\n";
+        cout << "[9] Funkcja zwracajaca ogon\n";
+        cout << "[10] Skasuj cala liste\n";
+        cout << "[11] Skasuj cala liste\n";
         cout << "\n";
         cin >> wybor;
         switch (wybor) {
@@ -246,7 +259,12 @@ int main()
                 delete_list(list_ptr);
                 cout << "Lista skasowana.\n";
                 break;
-            case 9:;
+            case 9:
+                
+                node_t *d = list_ptr;
+                item_t a = (tail(d)) . item;
+                
+                cout << "Ogon : " << a << endl;
                 break;
         }
         cout << "\n\n";
